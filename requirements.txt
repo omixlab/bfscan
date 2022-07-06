@@ -3,3 +3,6 @@ Biopython
 tqdm
 numpy
 bloom-filter2
+scikit-learn
+imbalanced-learn
+twine
