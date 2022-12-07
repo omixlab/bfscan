@@ -34,6 +34,7 @@ class BFScanFilter:
             raise Exception('Either class_name or y must be provided')
 
         for i, X_i in enumerate(X):
+            print(i)
             if y:
                 class_name = y[i]
             if class_name not in self.filters:
@@ -42,7 +43,7 @@ class BFScanFilter:
 
             kmers = sequence_to_kmer(X_i, self.k_size)
             
-            for kmer in kmers:
+            for k, kmer in enumerate(kmers):
                 self.filters[class_name].add(kmer)
 
     def predict(self, X, n_jobs=1):

@@ -26,7 +26,7 @@ def main():
     start_time = time.time()
 
     for r, record in enumerate(records):
-        read_class = bfscan_model.predict(bfscan_model.le.transform([str(record.seq)]), n_jobs=1)
+        read_class = bfscan_model.le.transform(bfscan_model.predict([str(record.seq)], n_jobs=1))
         read_class = bfscan_model.le.inverse_transform(read_class)[0]
         if read_class != "other":
             writers[read_class].write(record.format(arguments.output_format))

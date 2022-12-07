@@ -39,7 +39,8 @@ def main():
     
     records = (str(record.seq) for record in read_sequence_file(arguments.background))
 
-    for record in records:
+    for r, record in enumerate(records):
+
         X_raw.append([str(record)])
         y_raw.append("other")
     
@@ -51,11 +52,16 @@ def main():
 
     bfscan_model.le = LabelEncoder()
     bfscan_model.le.fit(y_train)
+
     y_train = bfscan_model.le.transform(y_train)
     y_test = bfscan_model.le.transform(y_test)
-    
+
     bfscan_model.fit(X_train, y_train)   
-    report = classification_report(y_test, bfscan_model.predict(X_test))
+    y_pred = bfscan_model.predict(X_test)
+
+    report = classification_report(bfscan_model.le.inverse_transform(y_test), y_pred)
+
+    print(report)
     
     if arguments.output_report is not None:
         with open(arguments.output_report, "w") as f:
