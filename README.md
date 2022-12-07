@@ -12,7 +12,7 @@ $ bfscan-build-filters \
     -i \
         data/fasta/salmonella.fasta \
         data/fasta/listeria.fasta \
-        data/fasta/campylobacter.fasta
+        data/fasta/campylobacter.fasta \
     -o data/filters/filter
 ```
 
@@ -23,7 +23,7 @@ $ bfscan-build-model \
     -i \
         data/fasta/salmonella.fasta \
         data/fasta/listeria.fasta \
-        data/fasta/campylobacter.fasta
+        data/fasta/campylobacter.fasta \
     -o data/models/model \
     -background data/fastq/metagenome.fastq \
     -r data/reports/classification_report.txt
@@ -34,7 +34,7 @@ $ bfscan-build-model \
 ```
 $ bfscan-search \
     -i \
-        reads.fastq
+        reads.fastq \
     -o data/results/filtered \
     -F fastq
 ``
